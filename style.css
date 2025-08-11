@@ -76,3 +76,81 @@ p{
     color: white;
     font-size:1.8rem;
 }
+*{ 
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{ 
+    font-size: 62.5%;
+}
+body{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: gray;
+}
+.card-wrapper {
+    position: relative;
+    width: fit-content;
+}
+
+.card {
+    max-width: 40rem;
+    height: auto;
+    background-color: rgb(17, 19, 26);
+    padding: 2.5rem 2rem;
+    text-align: justify;
+    border-radius: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.card-wrapper::after,
+.card-wrapper::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: conic-gradient(from var(--angle), transparent 70%, blue),conic-gradient(from calc(var(--angle) + 180deg), transparent 70%, red);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 1.2rem;
+    z-index: 0;
+    padding: 0.8rem;
+    animation: spin 3s linear infinite;
+}
+
+.card-wrapper::after {
+    filter: blur(1.5rem);
+    opacity: 0.5;
+}
+
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    }
+    to {
+        --angle: 360deg;
+    }
+}
+
+h2{ 
+    font-size:3.5rem;
+    color: white;
+    text-align: center;
+    margin-bottom:2rem;
+}
+p{ 
+    color: white;
+    font-size:1.8rem;
+}
